@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <classPathEntry location="D:\maven\repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar" />
+
+  <context id="Mysql2Tables" targetRuntime="MyBatis3">
+      <!--包的版本过低下面两个没用
+      作用是不生成注释
+      -->
+    <commentGenerator>
+      <property name="suppressDate" value="true"></property>
+      <property name="suppressAllComments" value="true"></property>
+    </commentGenerator>
+
+   <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/test4"
+        userId="root"
+        password="root">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="k9501.entity" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="k9501.mapper"  targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="k9501.mapper"  targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+      <!--要逆向生成几个表就写几个映射文件-->
+    <table  tableName="invitation" enableCountByExample="false" enableUpdateByExample="false"
+           enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+    </table>
+      <table  tableName="reply_detail" enableCountByExample="false" enableUpdateByExample="false"
+              enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+      </table>
+  </context>
+</generatorConfiguration>
